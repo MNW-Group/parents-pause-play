@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography"; /* Deze regel zet de artikel-opmaak aan! */
+
+@theme {
+  --color-brand-black: #000000;
+  --color-brand-dark: #121212;
+  --color-brand-pink: #EAB9BC;
+  --color-brand-blue: #A4C3D2;
+
+  /* --- Nieuwe Animatie Definities voor de Titel --- */
+  
+@keyframes colorRotate {
+    0%, 20% { color: var(--color-brand-pink); }   /* 0-2 sec: Blijf Roze */
+    30%, 70% { color: var(--color-brand-blue); }  /* 4-6 sec: Blijf Blauw */
+    80%, 100% { color: var(--color-brand-pink); } /* 8-10 sec: Blijf Roze */
+  }
+  /* 2. We maken een simpele utility klasse aan om deze animatie te gebruiken */
+  --animate-color-rotate: colorRotate 10s infinite;
+}
