@@ -104,6 +104,23 @@ export default async function ArticlePage({
 
   // === 5. PORTABLE TEXT CONFIGURATIE ===
   const portableTextComponents = {
+    // NIEUW: Hier vertellen we hoe afbeeldingen getekend moeten worden
+    types: {
+      image: ({ value }: any) => {
+        if (!value?.asset?._ref) return null;
+        return (
+          <div className="relative w-full aspect-video my-8 rounded-2xl overflow-hidden bg-[#0a0a0a]">
+            <Image
+              src={urlFor(value).width(1000).height(563).url()}
+              alt={value.alt || "Parents Pause and Play afbeelding"} 
+              fill
+              className="object-cover"
+            />
+          </div>
+        );
+      },
+    },
+    // BESTAAND: Jouw bestaande links en koppen
     marks: {
       internalLink: ({ value, children }: any) => {
         if (!value?.slug) return <>{children}</>;
@@ -125,7 +142,7 @@ export default async function ArticlePage({
       }
     }
   };
-
+  
   return (
     <main className="p-6 md:p-12 lg:p-16 max-w-4xl mx-auto w-full font-sans text-white">
       

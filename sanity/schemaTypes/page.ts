@@ -30,7 +30,18 @@ export const page = defineType({
       type: 'array',
       of: [
         { type: 'block' },
-        { type: 'image', options: { hotspot: true } } // Zo kun je ook foto's midden in je verhaal zetten
+        { type: 'image',
+      options: { hotspot: true },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternatieve tekst (Alt Text) voor SEO',
+          description: 'Beschrijf wat er op de afbeelding te zien is voor Google en schermlezers.',
+          // Optioneel: hiermee verplicht je jezelf/de marketeer om het altijd in te vullen
+          validation: (rule: import('sanity').Rule) => rule.required(), 
+        }
+      ] } // Zo kun je ook foto's midden in je verhaal zetten
       ],
     }),
   ],
