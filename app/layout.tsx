@@ -6,12 +6,27 @@ import Sidebar from "@/components/Sidebar";
 import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.parentspauseandplay.com'), // Vertelt Google dat dit jouw hoofddomein is
+  metadataBase: new URL('https://www.parentspauseandplay.com'),
   title: {
     default: "Parents, Pause & Play",
-    template: "%s | Parents, Pause & Play" // Zorgt dat je tabbladen er prachtig uit zien (bijv: "Pokemon Review | Parents, Pause...")
+    template: "%s | Parents, Pause & Play"
   },
   description: "Gaming through parenthood. Actionable tips, parent-proof game reviews, and strategies.",
+  openGraph: {
+    title: "Parents, Pause & Play",
+    description: "Gaming through parenthood. Actionable tips, parent-proof game reviews, and strategies.",
+    url: "https://www.parentspauseandplay.com",
+    siteName: "Parents, Pause & Play",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+      }
+    ],
+    locale: "en_US",
+    type: "website",
+  }
 };
 
 export default function RootLayout({
