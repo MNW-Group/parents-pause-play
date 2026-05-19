@@ -49,15 +49,15 @@ export default function Sidebar() {
         </button>
       </div>
 
-      {/* === 2. MOBIEL UITKLAPMENU === */}
+{/* === 2. MOBIEL UITKLAPMENU === */}
       {isOpen && (
-        <nav className="md:hidden bg-brand-dark border-b border-gray-800 flex flex-col p-4 z-40 relative">
+        <nav className="md:hidden bg-brand-dark/95 backdrop-blur-md border-b border-gray-800 flex flex-col p-4 z-40 fixed top-[73px] left-0 w-full h-screen">
           {navLinks.map((link) => (
             <Link 
               key={link.name} 
               href={link.href} 
               onClick={() => setIsOpen(false)}
-              className={`py-3 px-4 font-mono text-base tracking-wider uppercase ${link.hoverClass} transition-colors`}
+              className={`py-4 px-4 font-mono text-xl tracking-wider uppercase ${link.hoverClass} transition-colors border-b border-gray-800/50`}
             >
               {link.name}
             </Link>
@@ -65,6 +65,7 @@ export default function Sidebar() {
         </nav>
       )}
 
+      
       {/* === 3. JOUW EXACTE DESKTOP SIDEBAR (Alleen zichtbaar op 'md' en groter) === */}
       {/* Opmerking: w-80, bg-brand-dark, border-r en z-50 zijn precies zoals jij ze had */}
       <aside className="hidden md:flex w-80 bg-brand-dark fixed inset-y-0 border-r border-gray-800 flex-col p-8 z-50">
