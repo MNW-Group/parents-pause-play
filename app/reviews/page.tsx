@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import { client } from '@/sanity/lib/client';
+import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
 const themeMaps = {
   category: {
@@ -19,6 +21,7 @@ const REVIEWS_QUERY = `
     _id,
     title,
     excerpt,
+    mainImage,
     "slug": slug.current,
     _updatedAt,
     "label": "REVIEW"
@@ -59,6 +62,17 @@ export default async function ArticlesPage() {
               key={article._id}
               className="group flex flex-col bg-brand-dark rounded-3xl p-6 md:p-8 border border-gray-800/50 hover:border-gray-700 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
             >
+              {/* NIEUW: Afbeelding in de card ingeladen */}
+          {article.mainImage && (
+            <div className="relative w-full aspect-video mb-6 rounded-xl overflow-hidden bg-[#0a0a0a]">
+              <Image
+                src={urlFor(article.mainImage).width(600).height(338).url()}
+                alt={article.title}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          )}
               <div className="flex justify-between items-center mb-6 text-sm">
                 <span className={`${categoryClass} font-mono tracking-wider uppercase font-bold`}>
                   {article.label}

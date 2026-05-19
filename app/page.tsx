@@ -57,9 +57,9 @@ export default async function Home() {
       {/* === DE HERO BANNER === */}
       {/* FIX: Lijnkleur aangepast naar een duidelijkere border-gray-800 */}
       <header className="mb-20 pb-12 border-b-2 border-gray-800">
-        <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-6">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6 break-words">
           Gaming Through 
-          <span className="animate-color-rotate ml-3">Parenthood</span>
+          <span className="animate-color-rotate md:ml-3 inline-block mt-2 md:mt-0">Parenthood</span>
         </h1>
         <p className="text-gray-400 text-lg md:text-xl max-w-2xl font-light mb-8 leading-relaxed">
           Actionable tips, parent-proof game reviews, and strategies to balance your hobbies with your new reality.
