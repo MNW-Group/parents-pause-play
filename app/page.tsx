@@ -27,12 +27,14 @@ const FEATURED_QUERY = `
     mainImage,
     "slug": slug.current,
     _updatedAt,
-    "label": coalesce(category->title, genres[0], "ULTIMATE GUIDE")
+    "label": select(
+      _type == "review" => "REVIEW",
+      _type == "post" => "ULTIMATE GUIDE",
+      coalesce(category->title, "ARTICLE")
+    )
   }
 `;
 
-// 2. GROQ Query voor de LATEST CONTENT (Blok B)
-// NIEUW: mainImage toegevoegd aan de query
 const LATEST_QUERY = `
   *[_type in ["post", "article", "review"] && (isFeatured != true || !defined(isFeatured))] | order(_updatedAt desc)[0...6] {
     _id,
@@ -41,7 +43,11 @@ const LATEST_QUERY = `
     mainImage,
     "slug": slug.current,
     _updatedAt,
-    "label": coalesce(category->title, genres[0], "REVIEW")
+    "label": select(
+      _type == "review" => "REVIEW",
+      _type == "post" => "ULTIMATE GUIDE",
+      coalesce(category->title, "ARTICLE")
+    )
   }
 `;
 
@@ -191,13 +197,19 @@ export default async function Home() {
           })}
         </div>
 
-        {/* FIX: View All Content link naar rechtsonder verplaatst */}
-        <div className="mt-10 flex justify-end">
-          <Link href="/articles" className="text-sm font-bold text-gray-400 hover:text-white transition-colors">
-            VIEW ALL CONTENT →
+{/* NAVIGATIE KEUZES (In plaats van één View All knop) */}
+        <div className="mt-12 flex flex-col sm:flex-row justify-end items-center gap-6 md:gap-8 border-t border-gray-800/50 pt-6">
+          <Link href="/articles" className="text-sm font-bold text-brand-pink opacity-80 hover:opacity-100 transition-all hover:scale-105">
+            ALL ARTICLES →
           </Link>
-        </div>
-      </section>
+          <Link href="/reviews" className="text-sm font-bold text-brand-blue opacity-80 hover:opacity-100 transition-all hover:scale-105">
+            ALL REVIEWS →
+          </Link>
+          <Link href="/guides" className="text-sm font-bold text-brand-pink opacity-80 hover:opacity-100 transition-all hover:scale-105">
+            ULTIMATE GUIDES →
+          </Link>
+        </div>   
+        </section>
 
     </main>
   );
