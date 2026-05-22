@@ -190,7 +190,7 @@ export default async function ArticlePage({
           <div className="mb-10 p-5 bg-[#111] border-l-4 border-brand-blue rounded-r-xl">
             <p className="text-gray-300 font-light text-sm md:text-base">
               Curious how we evaluate games for busy parents? Read everything about our methodology in the{' '}
-              <Link href="/how-we-rate-games" className="!text-brand-pink hover:!text-brand-blue font-bold underline transition-none">
+              <Link href="/how-we-rate" className="!text-brand-pink hover:!text-brand-blue font-bold underline transition-none">
                 How We Rate Games: Pause & Play Stats
               </Link> guide.
             </p>
