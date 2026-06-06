@@ -1,5 +1,5 @@
 "use client"; // Maakt dit een interactieve Client Component
-
+import SearchBar from "./SearchBar";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -52,7 +52,10 @@ export default function Sidebar() {
 {/* === 2. MOBIEL UITKLAPMENU === */}
       {isOpen && (
         <nav className="md:hidden bg-brand-dark/95 backdrop-blur-md border-b border-gray-800 flex flex-col p-4 z-40 fixed top-[73px] left-0 w-full h-screen">
-          {navLinks.map((link) => (
+            <div className="mt-3">
+              <SearchBar onClose={() => setIsOpen(false)} />
+            </div>
+            {navLinks.map((link) => (
             <Link 
               key={link.name} 
               href={link.href} 
@@ -60,7 +63,7 @@ export default function Sidebar() {
               className={`py-4 px-4 font-mono text-xl tracking-wider uppercase ${link.hoverClass} transition-colors border-b border-gray-800/50`}
             >
               {link.name}
-            </Link>
+            </Link>     
           ))}
         </nav>
       )}
@@ -84,6 +87,9 @@ export default function Sidebar() {
             <span className="font-black text-brand-pink tracking-tight leading-tight text-2xl">PAUSE & PLAY</span>
           </div>
         </Link>
+          <div className="mb-8">
+            <SearchBar />
+          </div>
 
         {/* Navigatie Links */}
         <nav className="flex flex-col gap-4 font-mono text-lg tracking-wider uppercase flex-1">
