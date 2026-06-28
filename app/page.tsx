@@ -74,7 +74,7 @@ export default async function Home() {
           href="/the-ultimate-guide-to-gaming-first-year" 
           className="inline-block bg-brand-pink text-black hover:bg-brand-blue font-bold py-4 px-8 rounded-full transition-transform hover:-translate-y-1"
         >
-          Start Here: The First Year Ultimate Guide
+          Start Here: The First Year Guide
         </Link>
       </header>
 
